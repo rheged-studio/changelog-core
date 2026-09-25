@@ -19,6 +19,13 @@ import { dirname, join } from "node:path";
 // (Future: a skill could declare this in its SKILL.md metadata; hardcoded for now.)
 const SELF_CONFIGURING = new Set(["preflight"]);
 
+/** Relative paths under a consumer repo where agent skill bundles are vendored. */
+export const CONSUMER_SKILL_DIRS = [
+  ".claude/skills",
+  ".agents/skills",
+  ".cursor/skills",
+];
+
 /**
  * The directory holding sibling bundles: the parent of THIS bundle's own
  * directory. `import.meta.url` here is …/<skillsDir>/rheged-skills-setup/scripts/lib/discover.mjs,
@@ -121,4 +128,32 @@ export function discoverSkills(skillsDirectory = defaultSkillsDirectory()) {
   }
 
   return skills.toSorted((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Discover skills across every consumer mirror when no explicit `--skills-dir` is
+ * given; otherwise scope to that directory only (tests / unusual layouts).
+ * @param {string} repoRoot
+ * @param {string} [skillsDirectoryOverride]
+ * @returns {InstalledSkill[]}
+ */
+export function discoverConsumerSkills(
+  repoRoot,
+  skillsDirectoryOverride,
+) {
+  if (skillsDirectoryOverride) {
+    return discoverSkills(skillsDirectoryOverride);
+  }
+
+  /** @type {InstalledSkill[]} */
+  const skills = [];
+  for (const mirror of CONSUMER_SKILL_DIRS) {
+    skills.push(...discoverSkills(join(repoRoot, mirror)));
+  }
+
+  return skills.toSorted(
+    (a, b) =>
+      a.name.localeCompare(b.name) ||
+      a.configPath.localeCompare(b.configPath),
+  );
 }

@@ -12,16 +12,10 @@ import {
   RHEGED_AGENT_SKILLS_PACKAGE,
   rhegedSourceUrl,
 } from "./lib/catalogue.mjs";
-import { parseClobberedConfigs } from "./lib/git.mjs";
+import { CONSUMER_SKILL_DIRS } from "./lib/discover.mjs";
 import { spawnSync } from "node:child_process";
 import { existsSync, readFileSync, rmSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";
-
-export const CONSUMER_SKILL_DIRS = [
-  ".claude/skills",
-  ".agents/skills",
-  ".cursor/skills",
-];
 
 const DEFAULT_AGENTS = ["claude-code", "cursor"];
 
@@ -107,21 +101,6 @@ function run(command, args, cwd, environment) {
   }
 
   return result.stdout ?? "";
-}
-
-function restoreAllClobberedConfigs(repoRoot) {
-  const diff = run(
-    "git",
-    ["diff", "HEAD", "--name-only", "--diff-filter=DM"],
-    repoRoot,
-  );
-  const clobbered = parseClobberedConfigs(diff);
-  if (clobbered.length === 0) {
-    return [];
-  }
-
-  run("git", ["checkout", "HEAD", "--", ...clobbered], repoRoot);
-  return clobbered;
 }
 
 function runSkillsAdd(repoRoot, args) {
@@ -237,11 +216,6 @@ export async function runCatalogueInstall(options) {
       buildSkillsAddArgsForSource(source.url, source.skills, agents),
     );
   }
-
-  const restored = restoreAllClobberedConfigs(repoRoot);
-  console.log(
-    `rheged-skills-setup: restored ${restored.length} config.json from HEAD (A-706).`,
-  );
 
   const missingMatt = findMissingMattBundles(
     repoRoot,

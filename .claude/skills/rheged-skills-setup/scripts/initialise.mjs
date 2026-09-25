@@ -24,7 +24,7 @@ import { runCatalogueInstall } from "./install-from-catalogue.mjs";
 import { createDetectors } from "./lib/detectors.mjs";
 import {
   defaultSkillsDirectory,
-  discoverSkills,
+  discoverConsumerSkills,
   isPreflightInstalled,
 } from "./lib/discover.mjs";
 import { restoreClobberedConfigs } from "./lib/git.mjs";
@@ -270,7 +270,7 @@ async function main() {
     }
   }
 
-  let skills = discoverSkills(options.skillsDir);
+  let skills = discoverConsumerSkills(options.repoRoot, options.skillsDir);
 
   // A-706: a `skills add --copy` re-vendor clobbers each tracked config.json
   // (agent-skills ships none — A-615), so restore them from HEAD *before*
@@ -302,7 +302,7 @@ async function main() {
     // Only re-read when a restore actually landed; otherwise `skills` still holds
     // the clobbered values (and the message above says so).
     if (restored.length > 0) {
-      skills = discoverSkills(options.skillsDir);
+      skills = discoverConsumerSkills(options.repoRoot, options.skillsDir);
     }
   }
 
