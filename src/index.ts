@@ -58,4 +58,9 @@ export {
   stringifyFrontmatter,
 } from "./lib/frontmatter.js";
 export { readPackageVersion, stampVersion } from "./lib/stamp.js";
-export { buildIssueRe, escapeRegex } from "./lib/vendor/issue-keys.js";
+export {
+  buildBranchIssueRe,
+  buildIssueRe,
+  escapeRegex,
+  extractBranchIssueId,
+} from "./lib/vendor/issue-keys.js";
