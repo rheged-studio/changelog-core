@@ -11,7 +11,7 @@ author: "rob@acmeskunkworks.io"
 co_authors: []
 category: chore
 breaking: false
-issues: ["A-980"]
+issues: ["R-980"]
 stats:
   files_changed:
   loc_added:
@@ -22,7 +22,7 @@ stats:
 ## Added
 
 - An `npm` package ecosystem in `.github/dependabot.yml`
-  ([A-980](https://linear.app/rheged-studio/issue/A-980)), grouped weekly so one lockfile
+  ([R-980](https://linear.app/rheged-studio/issue/R-980)), grouped weekly so one lockfile
   churn lands or reverts atomically. Its `commit-message` template sets `prefix`,
   `prefix-development` and `include: scope`, so bumps read `chore(deps): …` and
   `chore(deps-dev): …`. Setting both prefixes matters: `prefix` alone leaves

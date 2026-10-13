@@ -12,7 +12,7 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-1267
+  - R-1267
 affected_packages:
   - infrastructure
 stats:
@@ -23,9 +23,9 @@ stats:
 
 ## Changed
 
-**Re-vendor shared agent-skills to source `main` ([A-1267](https://linear.app/rheged-studio/issue/A-1267))**
+**Re-vendor shared agent-skills to source `main` ([R-1267](https://linear.app/rheged-studio/issue/R-1267))**
 
 - Wipe + re-copy shared skill bundles on `.claude` and `.agents` from `acme-skunkworks/agent-skills`
-- Restore per-skill `config.json` (A-706) and reconcile via `initialise-skills`
+- Restore per-skill `config.json` (R-706) and reconcile via `initialise-skills`
 - Land `triage-pr` human-envelope / review-wait / `deferNonBlocking` and `send-it.triage` where those skills are installed
 - Preserve repo-local skills; keep Linear identity `Rheged Studio` / `rheged-studio`

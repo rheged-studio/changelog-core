@@ -11,7 +11,7 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-811
+  - R-811
 stats:
   files_changed: 3
   loc_added: 25
@@ -22,4 +22,4 @@ version: 1.1.0
 
 ## Changed
 
-- Set `package.json` and `.release-please-manifest.json` to `1.0.0` so the manual first publish and subsequent OIDC Trusted Publishing path can bootstrap ([A-811](https://linear.app/rheged-studio/issue/A-811))
+- Set `package.json` and `.release-please-manifest.json` to `1.0.0` so the manual first publish and subsequent OIDC Trusted Publishing path can bootstrap ([R-811](https://linear.app/rheged-studio/issue/R-811))

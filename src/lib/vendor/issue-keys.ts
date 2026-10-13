@@ -2,8 +2,8 @@
 // Linear issue-key regex from a branch name or prose.
 //
 // TypeScript port of agent-skills' `lib/issue-keys.mjs` (vendored per ADR-0004,
-// A-534). Re-sync by hand when upstream changes; last synced at agent-skills
-// `76a032d` (A-2652).
+// R-534). Re-sync by hand when upstream changes; last synced at agent-skills
+// `76a032d` (R-2652).
 //
 // Pure and zero-dependency by design: the host loads its own config and
 // passes the configured keys in.
@@ -23,7 +23,7 @@ export function escapeRegex(source: string): string {
  * the empty string before every `-<digits>` and inject bogus links (e.g. `-2`).
  * A single key needs no `(?:…)` wrapper — only wrap when there's an alternation,
  * because the naive join `\bA|B-\d+\b` parses as `\bA` *or* `B-\d+\b` (matching a
- * bare `A` and missing `A-7`).
+ * bare `A` and missing `R-7`).
  */
 export function buildIssueRe(keys: string[]): null | RegExp {
   if (!Array.isArray(keys) || keys.length === 0) {
@@ -39,7 +39,7 @@ export function buildIssueRe(keys: string[]): null | RegExp {
  * Build the anchored `^(?:KEY|…)-\d+\b` matcher (no global flag) for reading a
  * branch name's **leading** issue ID. Branches are named `<id>-<slug>`, so only
  * the leading token is the branch's issue: a slug token such as `-c-2-` or
- * `-r-3-` must never resolve to an issue (A-2682). Same escaping, grouping and
+ * `-r-3-` must never resolve to an issue (R-2682). Same escaping, grouping and
  * empty-key rules as `buildIssueRe`; prose (changelog bodies, commit messages,
  * PR titles) keeps the unanchored `buildIssueRe`.
  */

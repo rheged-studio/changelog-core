@@ -23,7 +23,7 @@ path), in order:
 3. `.claude/skills/changelog/config.json`
 4. `.agents/skills/changelog/config.json`
 5. `config.json` (committed repo-root — stopgap while skill `config.json` stays
-   gitignored; see [A-812](https://linear.app/rheged-studio/issue/A-812))
+   gitignored; see [R-812](https://linear.app/rheged-studio/issue/R-812))
 
 Required identity keys: `issueKeys`, `linearWorkspaceSlug`. Structural keys
 (`baseBranch`, `changelogDir`, `packageRoots`, `fallbackPackage`,
@@ -60,7 +60,7 @@ The frontmatter schema and field-ownership rules live in
 [`changelog-contract.md`](changelog-contract.md) (also importable as
 `@rheged-studio/changelog-core/contract`).
 
-`merge_strategy` is **not** part of the contract (A-802). Existing entries that
+`merge_strategy` is **not** part of the contract (R-802). Existing entries that
 still carry the key validate fine — unknown keys are ignored.
 
 ## Library

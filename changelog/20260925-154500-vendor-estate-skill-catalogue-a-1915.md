@@ -12,7 +12,7 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-1915
+  - R-1915
 affected_packages:
   - infrastructure
 stats:
@@ -24,9 +24,9 @@ stats:
 
 ## Changed
 
-**Vendor full Rheged + Matt Pocock skill catalogue ([A-1915](https://linear.app/rheged-studio/issue/A-1915))**
+**Vendor full Rheged + Matt Pocock skill catalogue ([R-1915](https://linear.app/rheged-studio/issue/R-1915))**
 
-- Install via `rheged-skills-setup --install --write`; restore vendored `config.json` from HEAD ([A-706](https://linear.app/rheged-studio/issue/A-706))
+- Install via `rheged-skills-setup --install --write`; restore vendored `config.json` from HEAD ([R-706](https://linear.app/rheged-studio/issue/R-706))
 - Drop legacy `initialise-skills` in favour of `rheged-skills-setup`
 - Preserve repo extras (`commit`, `release-status`); bump `send-it` 0.8.1 → 0.8.2 and `triage-pr` 0.13.0 → 0.14.0
 - Add Matt productivity packs (`grill-me`, `wizard`, `triage`, …) on both `.claude` and `.agents` mirrors

@@ -1,6 +1,6 @@
 // Release-time finalisation of changelog entries — in-repo via
 // `reusable-changelog-enrich.yml` mode `finalise` / `changelog-core finalise`
-// after release-please bumps package.json (A-801 retired the central orchestrator
+// after release-please bumps package.json (R-801 retired the central orchestrator
 // finalise). Reads the just-bumped version from package.json.
 //
 // For every entry that isn't finalised yet (empty `version`):
@@ -65,11 +65,11 @@ export function finaliseEntry(
   // Include blank(fm.stats) so a hand-authored entry that pre-fills
   // merged_at/commit/pr but leaves stats blank still gets stats from the PR.
   // Also treat a populated-but-commits-less stats block as enrichable: an entry
-  // finalised in the window between `stats` first existing (A-380) and
-  // `stats.commits` being added (A-560) has every other field set, so without
+  // finalised in the window between `stats` first existing (R-380) and
+  // `stats.commits` being added (R-560) has every other field set, so without
   // the `stats.commits` check needsEnrich is false, enrich is skipped, the entry
   // is version-stamped, and the later version short-circuit makes the missing
-  // `commits` un-backfillable through finalise forever (A-579).
+  // `commits` un-backfillable through finalise forever (R-579).
   const stats =
     typeof fm.stats === "object" &&
     fm.stats !== null &&

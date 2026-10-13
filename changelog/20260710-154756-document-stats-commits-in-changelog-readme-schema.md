@@ -11,7 +11,7 @@ co_authors: []
 category: docs
 breaking: false
 issues:
-  - A-820
+  - R-820
 stats:
   files_changed:
   loc_added:

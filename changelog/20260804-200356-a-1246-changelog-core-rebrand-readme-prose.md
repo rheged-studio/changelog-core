@@ -11,7 +11,7 @@ co_authors: []
 category: docs
 breaking: false
 issues:
-  - A-1246
+  - R-1246
 stats:
   files_changed:
   loc_added:
@@ -21,4 +21,4 @@ stats:
 
 ## Changed
 
-**README brand prose ([A-1246](https://linear.app/rheged-studio/issue/A-1246))** — replace Acme Skunkworks with Rheged Studio in the human-facing README intro. Package identifiers (`@acme-skunkworks/*`) stay unchanged.
+**README brand prose ([R-1246](https://linear.app/rheged-studio/issue/R-1246))** — replace Acme Skunkworks with Rheged Studio in the human-facing README intro. Package identifiers (`@acme-skunkworks/*`) stay unchanged.

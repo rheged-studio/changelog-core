@@ -1,8 +1,8 @@
 // Resolve a merged PR's commit count EXCLUDING merge commits, via the GitHub
 // REST commits endpoint. Shared by finalise (release-time enrichment) and
-// backfill-commits (the one-off backlog backfill) — A-560.
+// backfill-commits (the one-off backlog backfill) — R-560.
 //
-// Works for both squash and merge-commit trunk strategies (A-825):
+// Works for both squash and merge-commit trunk strategies (R-825):
 //
 // - **Squash:** the per-commit count is lost from local trunk history (the PR
 //   lands as a single-parent squash SHA), but the PR commits endpoint still

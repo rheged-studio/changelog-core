@@ -1,6 +1,6 @@
 // Validates the individual dated changelog entries under `changelog/`.
 //
-// The single authored changelog validator (A-369): this is the only copy —
+// The single authored changelog validator (R-369): this is the only copy —
 // the root `validate:changelog` script and consumers both run it.
 //   - `version` is accepted (typed-when-present semver string).
 //   - `affected_packages` is accepted (typed-when-present string array) — owned

@@ -11,7 +11,7 @@ author: "rob@acmeskunkworks.io"
 co_authors: []
 category: chore
 breaking: false
-issues: ["A-825"]
+issues: ["R-825"]
 stats:
   files_changed:
   loc_added:
@@ -22,18 +22,18 @@ stats:
 ## Changed
 
 - Updated stale `finalise` command docs: enrichment now runs in-repo via
-  `reusable-changelog-enrich.yml` mode `finalise` (A-801 retired the central
+  `reusable-changelog-enrich.yml` mode `finalise` (R-801 retired the central
   orchestrator finalise).
 - Extended `commit-count` header comments to cover both squash and merge-commit
   trunk strategies.
 
 ## Added
 
-- Tests documenting A-825 multi-commit merge readiness: squash-shaped
+- Tests documenting R-825 multi-commit merge readiness: squash-shaped
   `mergeCommit.oid`, 2-parent merge-commit OID resolution, and authored commit
   counting via the PR commits API.
 
-## Validation (A-825)
+## Validation (R-825)
 
 Empirical checks against live GitHub data:
 

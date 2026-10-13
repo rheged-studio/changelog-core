@@ -7,17 +7,17 @@ Workflow logic extracted from `.github/workflows/*.yml` plus shared dev-tooling 
 ```text
 infrastructure/
   scripts/                          # executable logic. one file = one purpose
-    ensure-yamllint.sh              # CI-unused since A-447 (lint reusable caller installs yamllint); local + reference
-    ensure-actionlint.sh            # CI-unused since A-447 (lint reusable caller installs actionlint); local + reference
-    ensure-bats.sh                  # CI-unused since A-447 (build-test caller runs `pnpm exec bats`); local + reference
-    publish-via-raw-npm.sh          # CI-unused since A-639 (reusable-pkg-release.yml inlines the npm publish); local + reference
-    publish-to-github-packages.sh   # CI-unused since A-639 (reusable-pkg-release.yml inlines the GH Packages publish); local + reference
+    ensure-yamllint.sh              # CI-unused since R-447 (lint reusable caller installs yamllint); local + reference
+    ensure-actionlint.sh            # CI-unused since R-447 (lint reusable caller installs actionlint); local + reference
+    ensure-bats.sh                  # CI-unused since R-447 (build-test caller runs `pnpm exec bats`); local + reference
+    publish-via-raw-npm.sh          # CI-unused since R-639 (reusable-pkg-release.yml inlines the npm publish); local + reference
+    publish-to-github-packages.sh   # CI-unused since R-639 (reusable-pkg-release.yml inlines the GH Packages publish); local + reference
   tests/
     *.bats                          # bats-core, run via `pnpm test:sh`
     fixtures/                       # static inputs shared by tests
 ```
 
-Changelog logic lives in the package source under `src/` (A-803) —
+Changelog logic lives in the package source under `src/` (R-803) —
 `pnpm validate:changelog`, `pnpm changelog:finalise`, and
 `pnpm tsx src/cli.ts check-completeness` — not under `infrastructure/scripts/`;
 the published artefact is emitted to `dist/`.
@@ -45,7 +45,7 @@ pnpm test:sh       # bats; locally prints install hint and exits 0 if bats is mi
 pnpm lint:sh       # shellcheck; same skip-with-hint contract locally
 ```
 
-CI (since A-447) runs these via the shared reusable callers: the `build-test` caller runs ShellCheck + Vitest + bats, and the `lint` caller runs the changelog validation. The `ensure-*.sh` bootstrap scripts are no longer wired into CI (the reusable workflows install yamllint/actionlint/bats themselves) but remain unit-tested here via `pnpm test:sh` as the local + reference path.
+CI (since R-447) runs these via the shared reusable callers: the `build-test` caller runs ShellCheck + Vitest + bats, and the `lint` caller runs the changelog validation. The `ensure-*.sh` bootstrap scripts are no longer wired into CI (the reusable workflows install yamllint/actionlint/bats themselves) but remain unit-tested here via `pnpm test:sh` as the local + reference path.
 
 ## Adding a new script
 

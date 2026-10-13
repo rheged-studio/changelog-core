@@ -11,7 +11,7 @@ co_authors: []
 category: docs
 breaking: false
 issues:
-  - A-802
+  - R-802
 stats:
   files_changed: 3
   loc_added: 25
@@ -22,4 +22,4 @@ version: 1.1.0
 
 ## Changed
 
-- Removed stale `merge_strategy` mentions from `changelog/README.md` and `CLAUDE.md`, aligning them with the package contract (field already dropped in [A-803](https://linear.app/rheged-studio/issue/A-803))
+- Removed stale `merge_strategy` mentions from `changelog/README.md` and `CLAUDE.md`, aligning them with the package contract (field already dropped in [R-803](https://linear.app/rheged-studio/issue/R-803))

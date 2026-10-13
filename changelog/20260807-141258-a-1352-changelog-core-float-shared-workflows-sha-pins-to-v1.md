@@ -11,7 +11,7 @@ author: "rob@acmeskunkworks.io"
 co_authors: []
 category: chore
 breaking: false
-issues: ["A-1352"]
+issues: ["R-1352"]
 stats:
   files_changed:
   loc_added:
@@ -23,4 +23,4 @@ stats:
 
 - Replace the pinned commit SHA with the `@v1` ref tag for
   `reusable-validate-payload` in `validate-payload.yml`
-  ([A-1352](https://linear.app/rheged-studio/issue/A-1352)).
+  ([R-1352](https://linear.app/rheged-studio/issue/R-1352)).

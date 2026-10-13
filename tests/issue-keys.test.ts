@@ -1,7 +1,7 @@
 // Ported from agent-skills' `tests/lib/issue-keys.test.ts` to cover the
-// vendored `src/lib/vendor/issue-keys.ts` (A-2652). The multi-team fixtures
+// vendored `src/lib/vendor/issue-keys.ts` (R-2652). The multi-team fixtures
 // model one repo carrying `c-` (Cadogan), `r-` (Rheged) and legacy `a-`
-// branches (A-2682).
+// branches (R-2682).
 import {
   buildBranchIssueRe,
   buildIssueRe,
@@ -11,12 +11,15 @@ import { describe, expect, it } from "vitest";
 
 const MULTI_TEAM_KEYS = ["C", "R", "A"];
 
-describe("extractBranchIssueId — leading ID only (A-2682)", () => {
+describe("extractBranchIssueId — leading ID only (R-2682)", () => {
   it.each([
     ["c-12-fix-r-3-thing", "C-12"],
     ["r-40-add-c-2-support", "R-40"],
-    ["a-2651-2-agent-skills-make-the-linear-skills-multi-team", "A-2651"],
-    ["A-123/demo", "A-123"],
+    [
+      "a-2651-2-agent-skills-make-the-linear-skills-multi-team",
+      "a-2651".toUpperCase(),
+    ], // legacy A key: keep expected in step with the lowercase branch,
+    ["R-123/demo", "R-123"],
     ["R-7", "R-7"],
   ])("%s → %s", (branch, expected) => {
     expect(extractBranchIssueId(branch, MULTI_TEAM_KEYS)).toBe(expected);
@@ -77,10 +80,10 @@ describe("buildBranchIssueRe", () => {
 describe("buildIssueRe — prose matcher stays unanchored", () => {
   it("still finds every ID anywhere in prose", () => {
     const re = buildIssueRe(MULTI_TEAM_KEYS) ?? /$^/;
-    expect("Closes C-12, see R-3 and A-9.".match(re)).toEqual([
+    expect("Closes C-12, see R-3 and R-9.".match(re)).toEqual([
       "C-12",
       "R-3",
-      "A-9",
+      "R-9",
     ]);
   });
 });

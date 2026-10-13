@@ -366,7 +366,7 @@ function serialiseString(string_: string): string {
 
   // Prefer double quotes (Prettier's YAML default) so enrich/finalise rewrites
   // don't turn authored `created_at: "…"` into single-quoted scalars that fail
-  // consumer `prettier --check` (A-1308).
+  // consumer `prettier --check` (R-1308).
   const escaped = string_
     .replaceAll("\\", "\\\\")
     .replaceAll('"', '\\"')

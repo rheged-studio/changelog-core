@@ -12,7 +12,7 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-1588
+  - R-1588
 affected_packages:
   - infrastructure
 stats:
@@ -23,8 +23,8 @@ stats:
 
 ## Changed
 
-**Roll shared agent-skills bundles to `main` ([A-1588](https://linear.app/rheged-studio/issue/A-1588))**
+**Roll shared agent-skills bundles to `main` ([R-1588](https://linear.app/rheged-studio/issue/R-1588))**
 
 - Re-vendor canonical skill set on `.claude` and `.agents` mirrors via `fleet-update.mjs`
-- Restore per-skill `config.json` ([A-706](https://linear.app/rheged-studio/issue/A-706)) and set `followUpProject` to `Follow-up issues`
+- Restore per-skill `config.json` ([R-706](https://linear.app/rheged-studio/issue/R-706)) and set `followUpProject` to `Follow-up issues`
 - Bump `triage-pr` 0.11.0 → 0.13.0 (inherit-then-fallback routing, follow-up language)

@@ -12,8 +12,8 @@ co_authors: []
 category: chore
 breaking: false
 issues:
-  - A-2302
-  - A-2299
+  - R-2302
+  - R-2299
 stats:
   files_changed:
   loc_added:
@@ -23,7 +23,7 @@ stats:
 
 ## Changed
 
-**Re-vendor estate agent skills for mattpocock/skills v1.3.1 ([A-2302](https://linear.app/rheged-studio/issue/A-2302), roll [A-2299](https://linear.app/rheged-studio/issue/A-2299))**
+**Re-vendor estate agent skills for mattpocock/skills v1.3.1 ([R-2302](https://linear.app/rheged-studio/issue/R-2302), roll [R-2299](https://linear.app/rheged-studio/issue/R-2299))**
 
 - Refresh Rheged and Matt Pocock bundles via `fleet-update.mjs --apply`; restore vendored `config.json` from HEAD
 - Add `implement-spec`, `retro`, and Rheged `pr`; remove `resolving-merge-conflicts`
