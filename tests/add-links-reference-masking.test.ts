@@ -1,4 +1,4 @@
-// `rewriteBody` loads config via the shared vitest setup (issue key A,
+// `rewriteBody` loads config via the shared vitest setup (issue keys R and A,
 // workspace rheged-studio).
 import { rewriteBody } from "../src/commands/add-links.js";
 import { describe, expect, it } from "vitest";
