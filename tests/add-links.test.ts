@@ -1,4 +1,4 @@
-// `rewriteBody` loads config via the shared vitest setup (issue key A,
+// `rewriteBody` loads config via the shared vitest setup (issue keys R and A,
 // workspace rheged-studio). Reference-style label masking is covered in
 // ./add-links-reference-masking.test.ts; this suite covers the issue-key
 // rewrite happy path plus inline-code / fenced-block masking and the
@@ -22,6 +22,7 @@ describe("rewriteBody — issue-key linking (happy path)", () => {
     expect(rewriteBody("Closes A-401.")).toBe(
       `Closes [A-401](${url("A-401")}).`,
     );
+    expect(rewriteBody("Closes R-7.")).toBe(`Closes [R-7](${url("R-7")}).`);
   });
 
   it("links several IDs in one body", () => {
@@ -30,8 +31,14 @@ describe("rewriteBody — issue-key linking (happy path)", () => {
     );
   });
 
+  it("links R- and legacy A- IDs side by side (A-2652)", () => {
+    expect(rewriteBody("R-12 supersedes A-34.")).toBe(
+      `[R-12](${url("R-12")}) supersedes [A-34](${url("A-34")}).`,
+    );
+  });
+
   it("leaves unknown team keys untouched", () => {
-    const body = "ZZ-9 is not a configured key.";
+    const body = "ZZ-9 and C-9 are not configured keys.";
     expect(rewriteBody(body)).toBe(body);
   });
 

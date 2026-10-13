@@ -10,7 +10,7 @@ const configPath = join(directory, "config.json");
 writeFileSync(
   configPath,
   JSON.stringify({
-    issueKeys: ["A"],
+    issueKeys: ["R", "A"],
     linearWorkspaceSlug: "rheged-studio",
   }),
 );
