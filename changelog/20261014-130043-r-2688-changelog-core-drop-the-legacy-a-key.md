@@ -21,4 +21,4 @@ version: ""
 
 ## Changed
 
-- **`issueKeys` is `["R"]` in every config copy ([R-2688](https://linear.app/rheged-studio/issue/R-2688)).** The Linear team key was renamed A to R and no `a-` branches remain, so the legacy key is dropped from the root and the `.claude`/`.agents` skill configs. Source defaults are untouched: `src/lib/config.ts` has no default key list**
+- **`issueKeys` is `["R"]` in every config copy ([R-2688](https://linear.app/rheged-studio/issue/R-2688)).** The Linear team key was renamed A to R and no `a-` branches remain, so the legacy key is dropped from the root and the `.claude`/`.agents` skill configs. Source defaults are untouched: `src/lib/config.ts` has no default key list.
