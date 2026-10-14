@@ -12,8 +12,8 @@ co_authors: []
 category: docs
 breaking: false
 issues:
-  - A-2432
-  - A-2430
+  - R-2432
+  - R-2430
 stats:
   files_changed:
   loc_added:
@@ -23,6 +23,6 @@ stats:
 
 ## Added
 
-**Add a root GLOSSARY.md pinning the changelog-core domain language ([A-2432](https://linear.app/rheged-studio/issue/A-2432), part of [A-2430](https://linear.app/rheged-studio/issue/A-2430))**
+**Add a root GLOSSARY.md pinning the changelog-core domain language ([R-2432](https://linear.app/rheged-studio/issue/R-2432), part of [R-2430](https://linear.app/rheged-studio/issue/R-2430))**
 
 - Define entry, contract, PR-time and post-merge fields, the validate / enrich / finalise commands and the completeness gate

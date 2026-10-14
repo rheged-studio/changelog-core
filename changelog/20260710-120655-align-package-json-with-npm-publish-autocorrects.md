@@ -11,7 +11,7 @@ co_authors: []
 category: fix
 breaking: false
 issues:
-  - A-811
+  - R-811
 stats:
   files_changed: 2
   loc_added: 25
@@ -22,4 +22,4 @@ version: 1.1.0
 
 ## Fixed
 
-- Set `bin.changelog-core` to `dist/cli.js` (no `./` prefix) and `repository.url` to the `git+https://` form so publish no longer auto-corrects or risks dropping the CLI entry ([A-811](https://linear.app/rheged-studio/issue/A-811))
+- Set `bin.changelog-core` to `dist/cli.js` (no `./` prefix) and `repository.url` to the `git+https://` form so publish no longer auto-corrects or risks dropping the CLI entry ([R-811](https://linear.app/rheged-studio/issue/R-811))

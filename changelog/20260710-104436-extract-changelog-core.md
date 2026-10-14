@@ -11,8 +11,8 @@ co_authors: []
 category: feature
 breaking: false
 issues:
-  - A-803
-  - A-812
+  - R-803
+  - R-812
 stats:
   files_changed: 97
   loc_added: 4819
@@ -24,7 +24,7 @@ version: 1.1.0
 ## Added
 
 - TypeScript package API and `changelog-core` CLI (`validate`, `enrich`, `finalise`, `set-affected-packages`, `add-links`, `backfill-commits`, `check-completeness`)
-- Shipped `changelog-contract.md` and a committed root `config.json` (stopgap while skill config stays gitignored — [A-812](https://linear.app/rheged-studio/issue/A-812))
+- Shipped `changelog-contract.md` and a committed root `config.json` (stopgap while skill config stays gitignored — [R-812](https://linear.app/rheged-studio/issue/R-812))
 - Consumer-cwd config resolution (`--config` / `CHANGELOG_CONFIG` / skill config paths / root `config.json`)
 - Ported unit tests from the agent-skills changelog suite
 
@@ -37,7 +37,7 @@ version: 1.1.0
 
 ## Fixed
 
-- Dropped `merge_strategy` from the contract and tooling ([A-802](https://linear.app/rheged-studio/issue/A-802) folded into extraction); unknown keys on existing entries remain tolerated
+- Dropped `merge_strategy` from the contract and tooling ([R-802](https://linear.app/rheged-studio/issue/R-802) folded into extraction); unknown keys on existing entries remain tolerated
 - `check-completeness` honours configured `changelogDir` instead of hard-coding `changelog/`
 - Backfill expands inline empty `stats: {}` mappings instead of duplicating the key
 - Shared `blank` / `realRunner` / `escapeRegex` helpers after extraction cleanup

@@ -1,4 +1,4 @@
-// `rewriteBody` loads config via the shared vitest setup (issue keys R and A,
+// `rewriteBody` loads config via the shared vitest setup (issue keys R and C,
 // workspace rheged-studio). Reference-style label masking is covered in
 // ./add-links-reference-masking.test.ts; this suite covers the issue-key
 // rewrite happy path plus inline-code / fenced-block masking and the
@@ -16,68 +16,68 @@ function url(id: string) {
 
 describe("rewriteBody — issue-key linking (happy path)", () => {
   it("links a bare issue ID for each configured team key", () => {
-    expect(rewriteBody("Closes A-12.")).toBe(`Closes [A-12](${url("A-12")}).`);
-    expect(rewriteBody("Closes A-3.")).toBe(`Closes [A-3](${url("A-3")}).`);
-    expect(rewriteBody("Closes A-9.")).toBe(`Closes [A-9](${url("A-9")}).`);
-    expect(rewriteBody("Closes A-401.")).toBe(
-      `Closes [A-401](${url("A-401")}).`,
+    expect(rewriteBody("Closes R-12.")).toBe(`Closes [R-12](${url("R-12")}).`);
+    expect(rewriteBody("Closes R-3.")).toBe(`Closes [R-3](${url("R-3")}).`);
+    expect(rewriteBody("Closes R-9.")).toBe(`Closes [R-9](${url("R-9")}).`);
+    expect(rewriteBody("Closes R-401.")).toBe(
+      `Closes [R-401](${url("R-401")}).`,
     );
     expect(rewriteBody("Closes R-7.")).toBe(`Closes [R-7](${url("R-7")}).`);
   });
 
   it("links several IDs in one body", () => {
-    expect(rewriteBody("A-1 and A-2 both landed.")).toBe(
-      `[A-1](${url("A-1")}) and [A-2](${url("A-2")}) both landed.`,
+    expect(rewriteBody("R-1 and R-2 both landed.")).toBe(
+      `[R-1](${url("R-1")}) and [R-2](${url("R-2")}) both landed.`,
     );
   });
 
-  it("links R- and legacy A- IDs side by side (A-2652)", () => {
-    expect(rewriteBody("R-12 supersedes A-34.")).toBe(
-      `[R-12](${url("R-12")}) supersedes [A-34](${url("A-34")}).`,
+  it("links R- and C- IDs side by side (R-2652)", () => {
+    expect(rewriteBody("R-12 supersedes C-160.")).toBe(
+      `[R-12](${url("R-12")}) supersedes [C-160](${url("C-160")}).`,
     );
   });
 
   it("leaves unknown team keys untouched", () => {
-    const body = "ZZ-9 and C-9 are not configured keys.";
+    const body = "ZZ-9 and Q-9 are not configured keys.";
     expect(rewriteBody(body)).toBe(body);
   });
 
   it("is idempotent — a second pass does not double-link", () => {
-    const once = rewriteBody("Closes A-12.");
+    const once = rewriteBody("Closes R-12.");
     expect(rewriteBody(once)).toBe(once);
   });
 });
 
 describe("rewriteBody — masking", () => {
   it("does not link an ID inside inline code", () => {
-    const body = "Run `validate A-12` before merge.";
+    const body = "Run `validate R-12` before merge.";
     expect(rewriteBody(body)).toBe(body);
   });
 
   it("does not link an ID inside a fenced code block", () => {
-    const body = "```\nbranch A-12 created\n```\n";
+    const body = "```\nbranch R-12 created\n```\n";
     expect(rewriteBody(body)).toBe(body);
   });
 
   it("does not re-link an already-linked inline ID", () => {
-    const body = `See [A-12](${url("A-12")}) for detail.`;
+    const body = `See [R-12](${url("R-12")}) for detail.`;
     expect(rewriteBody(body)).toBe(body);
   });
 
   it("round-trips inline code nested inside a link without leaking NUL bytes", () => {
     // The inner inline-code span masks first, then the whole `[<token>](url)`
     // masks again — the unmask must be reentrant or a literal NUL token survives
-    // and turns the entry into a binary blob (A-577).
-    const body = "See [`A-12`](https://example.test/A-12) for the helper.";
+    // and turns the entry into a binary blob (R-577).
+    const body = "See [`R-12`](https://example.test/R-12) for the helper.";
     const out = rewriteBody(body);
     expect(out).toBe(body);
     expect(out).not.toContain("\u0000");
   });
 
   it("links a bare ID whilst leaving a fenced/inline-code occurrence masked", () => {
-    const body = "Closes A-12; see `A-12` and:\n```\nA-12\n```\n";
+    const body = "Closes R-12; see `R-12` and:\n```\nR-12\n```\n";
     expect(rewriteBody(body)).toBe(
-      `Closes [A-12](${url("A-12")}); see \`A-12\` and:\n\`\`\`\nA-12\n\`\`\`\n`,
+      `Closes [R-12](${url("R-12")}); see \`R-12\` and:\n\`\`\`\nR-12\n\`\`\`\n`,
     );
   });
 
@@ -89,8 +89,8 @@ describe("rewriteBody — masking", () => {
   });
 
   it("links an ID even when a mask-token-like string is also present", () => {
-    expect(rewriteBody("FENCE0 — closes A-9.")).toBe(
-      `FENCE0 — closes [A-9](${url("A-9")}).`,
+    expect(rewriteBody("FENCE0 — closes R-9.")).toBe(
+      `FENCE0 — closes [R-9](${url("R-9")}).`,
     );
   });
 });
@@ -120,7 +120,7 @@ describe("splitFrontmatter", () => {
   });
 });
 
-describe("frontmatterBranch — branch-scoped default (A-603)", () => {
+describe("frontmatterBranch — branch-scoped default (R-603)", () => {
   it("reads the branch from an entry's frontmatter", () => {
     const raw =
       "---\ntitle: x\nbranch: a-603-add-links-scope\nversion:\n---\n## Added\n";

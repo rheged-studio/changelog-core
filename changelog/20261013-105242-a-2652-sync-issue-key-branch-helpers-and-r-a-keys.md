@@ -12,7 +12,7 @@ co_authors: []
 category: feature
 breaking: false
 issues:
-  - A-2652
+  - R-2652
 stats:
   files_changed:
   loc_added:
@@ -22,7 +22,7 @@ stats:
 
 ## Added
 
-- Re-sync the vendored `issue-keys.ts` with agent-skills `76a032d`. This adds `buildBranchIssueRe` and `extractBranchIssueId`, which match only a branch's leading `<KEY>-<n>` token, so slug tokens such as `-c-2-` never resolve ([A-2652](https://linear.app/rheged-studio/issue/A-2652), [A-2682](https://linear.app/rheged-studio/issue/A-2682)).
+- Re-sync the vendored `issue-keys.ts` with agent-skills `76a032d`. This adds `buildBranchIssueRe` and `extractBranchIssueId`, which match only a branch's leading `<KEY>-<n>` token, so slug tokens such as `-c-2-` never resolve ([R-2652](https://linear.app/rheged-studio/issue/R-2652), [R-2682](https://linear.app/rheged-studio/issue/R-2682)).
 - Export both helpers from the package entry point alongside `buildIssueRe` and `escapeRegex`, with the upstream test suite ported.
 
 ## Changed

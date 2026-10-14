@@ -83,9 +83,9 @@ describe("parseFrontmatter — arrays and nested mappings", () => {
 
   it("parses a block (`- item`) array", () => {
     const { data } = parseFrontmatter(
-      "---\nissues:\n  - A-1\n  - A-2\n---\nbody\n",
+      "---\nissues:\n  - R-1\n  - R-2\n---\nbody\n",
     );
-    expect(data.issues).toEqual(["A-1", "A-2"]);
+    expect(data.issues).toEqual(["R-1", "R-2"]);
   });
 
   it("parses a nested `stats:` mapping", () => {
@@ -136,7 +136,7 @@ describe("stringifyFrontmatter — round-trips", () => {
       flagish: "true",
       numish: "42",
     });
-    // Prefer double quotes (Prettier's YAML default) — A-1308.
+    // Prefer double quotes (Prettier's YAML default) — R-1308.
     expect(out).toContain('created_at: "2026-06-25T00:00:00Z"');
     expect(out).toContain('flagish: "true"');
     expect(out).toContain('numish: "42"');
@@ -149,7 +149,7 @@ describe("stringifyFrontmatter — round-trips", () => {
 
   it("double-quotes scalars that contain apostrophes and quotes", () => {
     // `: ` forces quoting; apostrophe + interior `"` exercise the double-quote
-    // escape path that replaced YAML single-quote (`''`) escaping (A-1308).
+    // escape path that replaced YAML single-quote (`''`) escaping (R-1308).
     const data = { title: 'Fix: it\'s "done"' };
     const out = stringifyFrontmatter("body\n", data);
     expect(out).toContain('title: "Fix: it\'s \\"done\\""');
@@ -157,7 +157,7 @@ describe("stringifyFrontmatter — round-trips", () => {
   });
 
   it("round-trips inline arrays as block arrays without losing items", () => {
-    const data = { co_authors: ["alice", "bob"], issues: ["A-1"] };
+    const data = { co_authors: ["alice", "bob"], issues: ["R-1"] };
     const out = stringifyFrontmatter("body\n", data);
     expect(parseFrontmatter(out).data).toEqual(data);
   });

@@ -27,12 +27,12 @@ function placeholderEntry(): string {
     "commit:",
     "category: fix",
     "breaking: false",
-    'issues: ["A-123"]',
+    'issues: ["R-123"]',
     "---",
     "",
     "## Fixed",
     "",
-    "- A thing for A-123.",
+    "- A thing for R-123.",
     "",
   ].join("\n");
 }
@@ -53,13 +53,13 @@ describe("finaliseEntry", () => {
       loc_removed: 2,
     });
     expect(content).toContain(
-      "[A-123](https://linear.app/rheged-studio/issue/A-123)",
+      "[R-123](https://linear.app/rheged-studio/issue/R-123)",
     );
   });
 
-  it("re-enriches when stats is present but the commits child is missing (A-579)", () => {
-    // An entry finalised between stats existing (A-380) and stats.commits
-    // (A-560): every other post-merge field is set and stats is populated, but
+  it("re-enriches when stats is present but the commits child is missing (R-579)", () => {
+    // An entry finalised between stats existing (R-380) and stats.commits
+    // (R-560): every other post-merge field is set and stats is populated, but
     // commits is absent. The gate must still treat it as enrichable so the
     // resolver fills commits — before version-stamping makes it permanent.
     const raw = [
@@ -77,12 +77,12 @@ describe("finaliseEntry", () => {
       "  files_changed: 3",
       "  loc_added: 10",
       "  loc_removed: 2",
-      'issues: ["A-123"]',
+      'issues: ["R-123"]',
       "---",
       "",
       "## Fixed",
       "",
-      "- A thing for A-123.",
+      "- A thing for R-123.",
       "",
     ].join("\n");
     let called = false;
@@ -115,7 +115,7 @@ describe("finaliseEntry", () => {
     expect(data.pr ?? "").toBe("");
   });
 
-  it("enriches multi-commit stats from a 2-parent mergeCommit OID (A-825)", () => {
+  it("enriches multi-commit stats from a 2-parent mergeCommit OID (R-825)", () => {
     const multiCommitPr: ResolvedPr = {
       additions: "120",
       changedFiles: "15",
@@ -215,7 +215,7 @@ describe("makeResolver", () => {
     });
   });
 
-  it("maps a 2-parent merge-commit OID and counts authored commits (A-825)", () => {
+  it("maps a 2-parent merge-commit OID and counts authored commits (R-825)", () => {
     const { run } = makeRunner({
       "gh api": () =>
         JSON.stringify([

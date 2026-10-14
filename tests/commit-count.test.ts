@@ -38,7 +38,7 @@ describe("nonMergeCommitCount", () => {
     expect(nonMergeCommitCount(run, 1)).toBe("1");
   });
 
-  it("counts a commit with a missing parents field as a normal commit (A-613)", () => {
+  it("counts a commit with a missing parents field as a normal commit (R-613)", () => {
     // The REST endpoint always includes `parents`; if a commit object arrives
     // without it, err toward counting authored work rather than dropping it.
     const run = runnerReturning(
@@ -60,7 +60,7 @@ describe("nonMergeCommitCount", () => {
     ).toBeNull();
   });
 
-  it("counts authored commits across a longer multi-commit PR history (A-825)", () => {
+  it("counts authored commits across a longer multi-commit PR history (R-825)", () => {
     // 6 single-parent authored commits + 2 merge commits (branch upkeep) → "6".
     const run = runnerReturning(
       JSON.stringify([

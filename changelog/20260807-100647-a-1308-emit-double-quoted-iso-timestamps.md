@@ -11,7 +11,7 @@ author: "rob@acmeskunkworks.io"
 co_authors: []
 category: fix
 breaking: false
-issues: ["A-1308"]
+issues: ["R-1308"]
 stats:
   files_changed:
   loc_added:
@@ -25,5 +25,5 @@ stats:
   required, matching Prettier defaults and the changelog schema examples.
 - Stop enrich/finalise from rewriting authored `created_at: "…"` /
   `merged_at: "…"` into single-quoted forms that fail consumer
-  `prettier --check` ([A-1308](https://linear.app/rheged-studio/issue/A-1308)).
+  `prettier --check` ([R-1308](https://linear.app/rheged-studio/issue/R-1308)).
 - Add explicit quote-style assertions in frontmatter and enrich unit tests.

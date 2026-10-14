@@ -101,7 +101,7 @@ describe("enrichFrontmatter", () => {
   });
 
   it("emits double-quoted ISO timestamps (Prettier-compatible)", () => {
-    // A-1308: enrich must not rewrite authored double-quoted timestamps into
+    // R-1308: enrich must not rewrite authored double-quoted timestamps into
     // single quotes that fail consumer `prettier --check`.
     const out = enrichFrontmatter(placeholderEntry(), BASE);
     expect(out).toContain('created_at: "2026-05-23T14:55:37Z"');
